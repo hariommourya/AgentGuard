@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+audit.sqlite3*
+.env
+.env.*
+.venv/
