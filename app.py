@@ -88,8 +88,10 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    server = ThreadingHTTPServer(("127.0.0.1", 8765), Handler)
-    print("Open http://127.0.0.1:8765   |   Ctrl+C to stop", flush=True)
+    host = "0.0.0.0" if "PORT" in os.environ else "127.0.0.1"
+    port = int(os.environ.get("PORT", "8765"))
+    server = ThreadingHTTPServer((host, port), Handler)
+    print(f"Open http://{host}:{port}   |   Ctrl+C to stop", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
